@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
 import { MenuMenu, MenuItem, Input, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'; //  using React Router for navigation
 
