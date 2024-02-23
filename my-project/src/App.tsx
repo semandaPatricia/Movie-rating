@@ -6,7 +6,7 @@ import Ratings from "./pages/Ratings/index";
 //import "./App.css";
 import Navbar from "./components/Navbar";
 import TvShows from "./pages/Tvshow";
-import Movies from "./pages/Movie";
+import { Movie } from "./pages/Movie";
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/ratings" element={<Ratings />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tv-shows" element={<TvShows />} />
+          <Route path="/movies/:id" element={<Movie />} />
+          <Route path="/tvshows/:id" element={<TvShows />} />
         </Routes>
       </Router>
     </>
