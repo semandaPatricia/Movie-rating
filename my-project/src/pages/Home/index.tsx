@@ -1,8 +1,8 @@
-
-import  { useState } from "react";
+import { useState } from "react";
 import { Button } from "semantic-ui-react";
 import { ColumnDisplay } from "./columnDisplay"; // Imported ColumnDisplay component
-import { useQuery } from "react-query"; // Imported useQuery
+//import { useQuery } from "react-query"; // Imported useQuery
+import { useQuery } from '@tanstack/react-query'
 import { fetchMovies, fetchTVShows } from "./queries";
 
 export enum DisplayType {
@@ -16,14 +16,15 @@ const Home = () => {
   );
 
   // Using useQuery to fetch data
-  const { data: moviesData, isLoading: isLoadingMovies } = useQuery(
-    "movies",
-    fetchMovies
-  );
-  const { data: tvShowsData, isLoading: isLoadingTvShows } = useQuery(
-    "tvShows",
-    fetchTVShows
-  );
+  const { data: moviesData, isLoading: isLoadingMovies } = useQuery({
+    queryKey:["movies"],
+    queryFn: fetchMovies,
+  });
+   
+  const { data: tvShowsData, isLoading: isLoadingTvShows } = useQuery({
+    queryKey:["tvshows"],
+    queryFn: fetchTVShows,
+  });
 
   return (
     <div style={{ marginTop: 50, height: "auto" }}>
@@ -56,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home
+export default Home;

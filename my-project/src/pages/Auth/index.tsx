@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 //import axios from 'axios';
 import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react';
-import { useMutation, useQuery } from '@tanstack/react-query'; // Imported useMutation and useQuery
+import { useMutation } from '@tanstack/react-query'; // Imported useMutation and useQuery
 import { useNavigate } from 'react-router-dom';
 import { mutationLogin } from './mutations';
 
 export const Auth: React.FC = () => { // Added React.FC type
-  const navigate = useNavigate(); // Corrected usage of useNavigate
   
-  const { data, mutate } = useMutation<{ guest_session_id: string }>({
+  
+  const { data, mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: mutationLogin,
-    onSuccess: (data) => { // Added onSuccess callback
-      localStorage.setItem("guest_session_id", data.guest_session_id);
-      navigate("/"); // Navigate on success
-    },
+   
   });
+
+  const navigate = useNavigate(); //  usage of useNavigate
 
   const handleLogin = async () => {
     await mutate();
+    localStorage.setItem("guest_session_id", data.guest_session_id);
+    navigate("/"); // Navigate on success
   };
 
   return (
