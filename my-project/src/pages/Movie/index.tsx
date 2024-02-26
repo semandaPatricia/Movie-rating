@@ -13,7 +13,7 @@ export const Movie = () => {
   // Using useQuery to fetch data
   const { data, isLoading } = useQuery({
     queryKey: ["movie"],
-    queryFn: () => fetchMoviesDetails(),
+    queryFn: () => fetchMoviesDetails(id),
   });
 
   if (isLoading) {
