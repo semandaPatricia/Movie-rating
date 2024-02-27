@@ -1,8 +1,6 @@
-
-
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { Header, Segment, Loader, Grid, Image, List, Label } from "semantic-ui-react";
+import { Header, Segment, Loader, Grid, Image, List, Label,Accordion ,Card} from "semantic-ui-react";
 import { fetchTvShowDetails } from "./query";
 
 export const TvShow = () => {
@@ -22,8 +20,22 @@ export const TvShow = () => {
     return <Loader active />;
   }
 
+  const seasonsPanels= data.seasons.map((season:any) =>({
+    key: season.id,
+    title:`Season ${season.season_number}`,
+    content:(
+      <Card
+      style ={{height:"60px"}}
+      meta={season.air_date}
+      description={season.episode_count}
+      
+      
+      />
+    )
+  }))
+
   return (
-    <div>
+    <div style={{ marginTop: 50}}>
       <Segment>
         <Header>{data.name}</Header>
         <Grid columns={2} divided textAlign={"left"} style={{ marginTop: 20 }}>
@@ -86,8 +98,25 @@ export const TvShow = () => {
                 </List.Item>
 
                 <List.Item>
-                  <List.Header>Number of Episodes: </List.Header>
+                  <List.Header>Number of Episode:</List.Header>
                   {data.number_of_episodes}
+                </List.Item>
+
+                <List.Item>
+                  <List.Header>Number of seasons:</List.Header>
+                  {data.number_of_seasons}
+                </List.Item>
+
+                <List.Item>
+                  <List.Header>Seasons: </List.Header>
+                  <List.Description  style ={{ height:"200px" ,overflowY:"scroll"}}>
+                    <Accordion
+                    defaultActiveIndex={0}
+                    panels={seasonsPanels}
+                    styled
+                    
+                    />
+                  </List.Description>
                 </List.Item>
 
                 <List.Item>

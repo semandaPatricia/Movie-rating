@@ -28,7 +28,8 @@ const Home = () => {
 
   return (
     <div style={{ marginTop: 50, height: "auto" }}>
-      <Button.Group>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Button.Group >
         <Button
           color={displayType === DisplayType.Movies ? "yellow" : undefined}
           onClick={() => setDisplayType(DisplayType.Movies)}
@@ -42,6 +43,9 @@ const Home = () => {
           TvShows
         </Button>
       </Button.Group>
+      </div>
+      
+
       {isLoadingMovies || isLoadingTvShows ? (
         <div>Loading....</div>
       ) : (
