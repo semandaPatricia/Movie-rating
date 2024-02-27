@@ -10,7 +10,7 @@ import { Movie } from "./pages/Movie";
 
 function App() {
   return (
-    <div style={{ margin: '0 auto'}}>
+    < >
       <Router>
         <Navbar/>
         <Routes>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/tvshow/:id" element={<TvShow />} />
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 

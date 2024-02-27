@@ -56,10 +56,13 @@ export const ColumnDisplay: React.FC<Props> = (props: Props) => {
                       : displayData.name
                   }
                   meta={`Release Date: ${displayData.release_date} | Rating: ${displayData.vote_average}`}
-                  description={displayData.overview.slice(0, 300) + "..."}
+                  description={displayData.overview.slice(0, 380) + "..."}
                 ></Card>
               </Link>
-              <Form style={{ marginTop: 10 }}>
+
+{/* Form */}
+
+<Form style={{ marginTop: 10 ,marginLeft:60 ,alignItems: "center",display: "flex", justifyContent: "center" }}>
                 <Form.Group inline>
                   <Form.Field>
                     <Form.Input
@@ -68,7 +71,7 @@ export const ColumnDisplay: React.FC<Props> = (props: Props) => {
                       max="10"
                       step="0.5"
                       action={{
-                        color: "violet",
+                        color: "yellow",
                         labelPosition: "right",
                         icon: "star",
                         onClick: () => {
@@ -80,6 +83,11 @@ export const ColumnDisplay: React.FC<Props> = (props: Props) => {
                   </Form.Field>
                 </Form.Group>
               </Form>
+
+
+             
+             
+             
             </Card.Group>
           </Grid.Column>
         ))
